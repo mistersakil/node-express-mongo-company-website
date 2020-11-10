@@ -1,0 +1,57 @@
+<!doctype HTML>
+<html lang="en">
+    <head>        
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <title><%= metaTitle %> : Octapia</title>
+        <!-- Favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.png">
+        <!-- Styles -->
+        <link rel="stylesheet" href="/backend/css/themify-icons.css" />
+        <link rel="stylesheet" href="/backend/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="/backend/css/vendor.bundle.base.css" />        
+        <link rel="stylesheet" href="/backend/css/dataTables.bootstrap4.css" />        
+        <link rel="stylesheet" href="/backend/css/style.css" />
+        <link rel="stylesheet" href="/backend/css/custom.css" />        
+    </head>
+
+    <body class="sidebar-fixed">
+        <div class="container-scroller">
+            <%- include("navbar") %>
+            
+            <div class="container-fluid page-body-wrapper"> 
+
+                <nav class="sidebar sidebar-offcanvas" id="sidebar">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin">
+                                <i class="ti-home menu-icon"></i>
+                                <span class="menu-title">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/posts">
+                                <i class="ti-export menu-icon"></i>
+                                <span class="menu-title">Posts</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/users">
+                                <i class="ti-bell menu-icon"></i>
+                                <span class="menu-title">Users</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">
+                                <i class="ti-bell menu-icon"></i>
+                                <span class="menu-title">Notifications</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                 <div class="main-panel">
+                    
+                    <div class="content-wrapper">
+                     <!-- main content goes here -->
+                   
