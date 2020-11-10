@@ -22,8 +22,5 @@
     "s-ago": "^2.2.0",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.6"
-  },
-  "devDependencies": {
-
   }
 }
