@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "node app.js"
   },
   "keywords": [],
   "author": "",
@@ -19,10 +19,11 @@
     "express-validator": "^6.6.1",
     "mongoose": "^5.10.11",
     "multer": "^1.4.2",
-    "s-ago": "^2.2.0"
-  },
-  "devDependencies": {
+    "s-ago": "^2.2.0",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.6"
+  },
+  "devDependencies": {
+
   }
 }
