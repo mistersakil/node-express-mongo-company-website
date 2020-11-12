@@ -11,7 +11,7 @@ const port = process.env.PORT || 1234;
 
 /* MengoDB Session store*/
 var store = new mongoDbSessionStore({
-    uri: process.env.DB_CONNECTION,
+    uri: `mongodb+srv://root:root@cluster0.btmjp.mongodb.net/blog`,
     collection: 'sessions',
     expires: 1000 * 60 * 60 * 7,
 });
@@ -32,7 +32,7 @@ app.use([
 
 
 /* database connection */
-mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
+mongoose.connect(`mongodb+srv://root:root@cluster0.btmjp.mongodb.net/blog`, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
     console.log(`Connected to BD`);
     app.listen(port, () => {
         console.log(`Server running on port ${port}`);
