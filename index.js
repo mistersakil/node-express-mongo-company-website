@@ -10,11 +10,11 @@ const routes = require(`./routes`);
 const PORT = process.env.PORT || 3333;
 
 /* MengoDB Session store*/
-var store = new mongoDbSessionStore({
-    uri: process.env.DB_CONNECTION,
-    collection: 'sessions',
-    expires: 1000 * 60 * 60 * 7,
-});
+// var store = new mongoDbSessionStore({
+//     uri: process.env.DB_CONNECTION,
+//     collection: 'sessions',
+//     expires: 1000 * 60 * 60 * 7,
+// });
 
 
 
@@ -25,19 +25,21 @@ var store = new mongoDbSessionStore({
 
 
 /* middlewares */
-// app.use([
-//     morgan(`dev`),
-//     express.json(),
-//     express.static(path.join(__dirname, "public")),
-//     express.urlencoded({ extended: false }),
-//     session({ secret: `octapia secret token`, store, resave: false, saveUninitialized: false }),
-//     routes
+app.use([
+    morgan(`dev`),
+    express.json(),
+    express.static(path.join(__dirname, "public")),
+    express.urlencoded({ extended: false }),
+    // session({ secret: `octapia secret token`, store, resave: false, saveUninitialized: false }),
+    routes
 
-// ]);
-app.get(`/`, (req, res) => {
+]);
 
-    res.send('home page <br>' + process.env.DB_CONNECTION + '<br>' + store);
-});
+
+// app.get(`/`, (req, res) => {
+
+//     res.send('home page <br>' + process.env.DB_CONNECTION + '<br>' + store);
+// });
 
 
 /* database connection */
