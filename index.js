@@ -1,10 +1,12 @@
-const express = require("express")
+const express = require(`express`)
+const mongoose = require(`mongoose`)
+require(`dotenv/config`);
+
 const app = express()
+const PORT = process.env.PORT || 2222;
 
-// parse incoming traditional HTML form submits
+
 app.use(express.urlencoded({ extended: false }))
-
-// parse incoming JSON payloads
 app.use(express.json())
 
 
@@ -12,6 +14,11 @@ app.get("/", (req, res) => {
     res.send('home page');
 })
 
-app.listen(process.env.PORT || 3000, () => {
-    console.log('server running on port 3000');
-})
+
+/* database connection */
+mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
+    console.log(`Connected to BD`);
+    app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`);
+    })
+});
