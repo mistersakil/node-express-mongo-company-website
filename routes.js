@@ -2,12 +2,12 @@ const router = require(`express`).Router();
 
 /* Controllers */
 
-const { register, registerProcess } = require(`./controllers/RegisterController`);
+const { home } = require(`./controllers/HomeController`);
 
 
 /* routes for frontend */
 
-router.get(`/`, register);
+router.get(`/`, home);
 
 
 

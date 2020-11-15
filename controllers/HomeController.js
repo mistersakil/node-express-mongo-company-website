@@ -2,13 +2,13 @@
 
 const viewFile = `frontend/home/home`;
 
-const metaTitle = `Register`;
+const metaTitle = `Home`;
 
 /* Registration page */
 
-const home = (req, res, next) => {
+const home = (req, res) => {
 
-    res.render(viewFile, { metaTitle: `Home` });
+    res.render(viewFile, { metaTitle });
 
 }
 
