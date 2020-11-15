@@ -20,16 +20,21 @@ var store = new mongoDbSessionStore({
 app.set(`views`, `views`);
 app.set(`view engine`, `ejs`);
 
-/* middlewares */
-app.use([
-    morgan(`dev`),
-    express.json(),
-    express.static(path.join(__dirname, "public")),
-    express.urlencoded({ extended: false }),
-    session({ secret: `octapia secret token`, store, resave: false, saveUninitialized: false }),
-    routes
 
-]);
+/* middlewares */
+// app.use([
+//     morgan(`dev`),
+//     express.json(),
+//     express.static(path.join(__dirname, "public")),
+//     express.urlencoded({ extended: false }),
+//     session({ secret: `octapia secret token`, store, resave: false, saveUninitialized: false }),
+//     routes
+
+// ]);
+app.get(`/`, (req, res) => {
+    res.send('home page');
+});
+
 
 /* database connection */
 mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
