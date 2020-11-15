@@ -7,7 +7,7 @@ const mongoDbSessionStore = require('connect-mongodb-session')(session);
 require(`dotenv/config`);
 const app = express();
 const routes = require(`./routes`);
-const PORT = process.env.PORT || 2222;
+const PORT = process.env.PORT || 3333;
 
 /* MengoDB Session store*/
 var store = new mongoDbSessionStore({
@@ -24,13 +24,12 @@ app.set(`view engine`, `ejs`);
 app.use([
     morgan(`dev`),
     express.json(),
-    express.static(`public`),
+    express.static(path.join(__dirname, "public")),
     express.urlencoded({ extended: false }),
     session({ secret: `octapia secret token`, store, resave: false, saveUninitialized: false }),
     routes
 
 ]);
-
 
 /* database connection */
 mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
