@@ -20,8 +20,9 @@ const PORT = process.env.PORT || 3333;
 
 
 /* set view engine */
-// app.set(`views`, `views`);
-// app.set(`view engine`, `ejs`);
+app.set(`views`, `views`);
+app.set(`view engine`, `ejs`);
+
 
 
 /* middlewares */

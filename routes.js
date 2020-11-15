@@ -7,9 +7,7 @@ const { register, registerProcess } = require(`./controllers/RegisterController`
 
 /* routes for frontend */
 
-router.get(`/`, (req, res) => {
-    res.send('home page');
-});
+router.get(`/`, register);
 
 
 
