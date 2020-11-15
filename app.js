@@ -7,7 +7,7 @@ const mongoDbSessionStore = require('connect-mongodb-session')(session);
 require(`dotenv/config`);
 const app = express();
 const routes = require(`./routes`);
-const port = process.env.PORT || 2222;
+const PORT = process.env.PORT || 2222;
 
 /* MengoDB Session store*/
 var store = new mongoDbSessionStore({
@@ -34,7 +34,7 @@ app.use([
 /* database connection */
 mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
     console.log(`Connected to BD`);
-    app.listen(port, () => {
-        console.log(`Server running on port ${port}`);
+    app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`);
     })
 });
