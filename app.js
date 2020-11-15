@@ -7,12 +7,11 @@ const mongoDbSessionStore = require('connect-mongodb-session')(session);
 require(`dotenv/config`);
 const app = express();
 const routes = require(`./routes`);
-const port = process.env.PORT || 1234;
+const port = process.env.PORT || 2222;
 
 /* MengoDB Session store*/
 var store = new mongoDbSessionStore({
-    uri: process.env.DB_CONNECTION
-,
+    uri: process.env.DB_CONNECTION,
     collection: 'sessions',
     expires: 1000 * 60 * 60 * 7,
 });
