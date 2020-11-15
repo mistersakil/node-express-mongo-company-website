@@ -11,10 +11,10 @@ const PORT = process.env.PORT || 3333;
 
 /* MengoDB Session store*/
 // var store = new mongoDbSessionStore({
-            //     uri: process.env.DB_CONNECTION,
-            //     collection: 'sessions',
-            //     expires: 1000 * 60 * 60 * 7,
-            // });
+//     uri: process.env.DB_CONNECTION,
+//     collection: 'sessions',
+//     expires: 1000 * 60 * 60 * 7,
+// });
 
 
 
@@ -34,7 +34,8 @@ const PORT = process.env.PORT || 3333;
 
 // ]);
 app.get(`/`, (req, res) => {
-    res.send('home page' + process.env.DB_CONNECTION);
+
+    res.send('home page <br>' + process.env.DB_CONNECTION + '<br>' + (new mongoDbSessionStore));
 });
 
 
