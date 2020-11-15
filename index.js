@@ -10,11 +10,12 @@ const routes = require(`./routes`);
 const PORT = process.env.PORT || 3333;
 
 /* MengoDB Session store*/
-// var store = new mongoDbSessionStore({
-//     uri: process.env.DB_CONNECTION,
-//     collection: 'sessions',
-//     expires: 1000 * 60 * 60 * 7,
-// });
+var store = new mongoDbSessionStore({
+    uri: process.env.DB_CONNECTION,
+    collection: 'sessions',
+    expires: 1000 * 60 * 60 * 7,
+});
+
 
 /* set view engine */
 // app.set(`views`, `views`);
