@@ -5,6 +5,7 @@ const router = require(`express`).Router();
 const { home } = require(`./controllers/frontend/HomeController`);
 const { contact } = require(`./controllers/frontend/ContactController`);
 const { about } = require(`./controllers/frontend/AboutController`);
+const { blog } = require(`./controllers/frontend/BlogController`);
 const { fourOfour } = require(`./controllers/frontend/ErrorController`);
 
 
@@ -13,6 +14,7 @@ const { fourOfour } = require(`./controllers/frontend/ErrorController`);
 router.get(`/`, home);
 router.get(`/contact`, contact);
 router.get(`/about`, about);
+router.get(`/blog`, blog);
 router.get(`*`, fourOfour);
 
 
