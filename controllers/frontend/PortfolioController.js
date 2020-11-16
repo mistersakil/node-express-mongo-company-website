@@ -1,15 +1,7 @@
-const portfolio = (req, res) => {
-
-    res.render(`frontend/portfolio/index`, { metaTitle: `Portfolio` });
-
+module.exports.portfolio = (req, res) => {
+    res.render(`frontend/portfolio/index`, { metaTitle: `Portfolio`, singlePageTitle: `Our Creative Works` });
 }
 
-const portfolioSingle = (req, res) => {
-
-    res.render(`frontend/portfolio/single`, { metaTitle: `Portfolio Single` });
-
+module.exports.portfolioSingle = (req, res) => {
+    res.render(`frontend/portfolio/single`, { metaTitle: `Portfolio Single`, singlePageTitle: `Multipurpose Business Website` });
 }
-
-
-
-module.exports = { portfolio, portfolioSingle };
