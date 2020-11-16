@@ -22,7 +22,7 @@ router.get(`/`, home);
 router.get(`/contact`, contact);
 router.get(`/about`, about);
 router.get(`/blog`, blog);
-// router.get(`/blog/single`, blogSingle);
+router.get(`/blog/single`, blogSingle);
 router.get(`/gallery`, gallery);
 router.get(`/portfolio`, portfolio);
 router.get(`/portfolio/single`, portfolioSingle);
