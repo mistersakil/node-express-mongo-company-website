@@ -1,17 +1,15 @@
-/*  Initial values */
-
-const viewFile = `frontend/portfolio/portfolio`;
-
-const metaTitle = `Portfolio`;
-
-/* Registration page */
-
 const portfolio = (req, res) => {
 
-    res.render(viewFile, { metaTitle });
+    res.render(`frontend/portfolio/index`, { metaTitle: `Portfolio` });
+
+}
+
+const portfolioSingle = (req, res) => {
+
+    res.render(`frontend/portfolio/single`, { metaTitle: `Portfolio Single` });
 
 }
 
 
 
-module.exports = { portfolio };
+module.exports = { portfolio, portfolioSingle };
