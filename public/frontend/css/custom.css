@@ -16,6 +16,11 @@
     border-radius: 25px;
 }
 
+.stick .logo-sticky-none {
+    display: block;
+    margin-top: -10px;
+}
+
 /*Responsive css*/
 @media only screen and (min-width: 992px) {
     .nav-style-hm10 .owl-nav {

@@ -1,21 +1,20 @@
 const router = require(`express`).Router();
 
-/* Controllers */
+/* Controllers Frontend */
 
 const { home } = require(`./controllers/frontend/HomeController`);
 const { contact } = require(`./controllers/frontend/ContactController`);
 const { about } = require(`./controllers/frontend/AboutController`);
+const { fourOfour } = require(`./controllers/frontend/ErrorController`);
 
 
-/* routes for frontend */
+/* Routes Frontend */
 
 router.get(`/`, home);
 router.get(`/contact`, contact);
 router.get(`/about`, about);
+router.get(`*`, fourOfour);
 
-router.get(`*`, (req, res) => {
-    res.send(`not found`);
-});
 
 
 module.exports = router;
