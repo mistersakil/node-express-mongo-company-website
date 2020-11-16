@@ -10,6 +10,12 @@
     color: #fff;
 }
 
+.logo-custom-style {
+    background: #fff;
+    padding: 10px;
+    border-radius: 25px;
+}
+
 /*Responsive css*/
 @media only screen and (min-width: 992px) {
     .nav-style-hm10 .owl-nav {
