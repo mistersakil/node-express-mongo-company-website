@@ -10,10 +10,8 @@
     color: #fff;
 }
 
-.logo-custom-style {
-    background: #fff;
-    padding: 10px;
-    border-radius: 25px;
+.slider-area .single-slider {
+    min-height: 100vh;
 }
 
 .stick .logo-sticky-none {
