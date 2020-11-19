@@ -1,0 +1,45 @@
+<!-- header start -->
+<%- include("../layout/header") %>
+<!-- header end -->
+<!-- content area start -->
+<div class="shortcode-login-regi-area pt-113 pb-120 black-bg-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-xl-6 col-md-12 col-12 ml-auto mr-auto">
+                <div class="pl-65 pr-65">
+                    <div class="login-regi-wrapper">
+                        <div class="login-register-tab-list text-center">
+                            <a class="active">
+                                <h4> Log In </h4>
+                            </a>
+                        </div>
+                        <div class="tab-content login-regi-content">
+                            <div id="login" class="tab-pane active">
+                                <div class="login-register-form">
+                                    <form action="/login" method="post">
+                                        <input type="text" name="email" placeholder="Email">
+                                        <input type="password" name="password" placeholder="Password">
+                                        <div class="submit-btn">
+                                            <button class="btn-hover" type="submit"><i class="ti-lock"></i> Log In</button>
+                                        </div>
+                                    </form>
+                                    <div class="login-social-wrap">
+                                        <p>Or Don't have an account? Register Please</p>
+                                        <div class="login-social-btn">
+                                            <a class="facebook" href="/register"><i class="ti-user"></i> Register</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content area end -->
+<!-- footer start -->
+<%- include("../layout/footer") %>
+<%- include("../layout/close") %>
+<!-- footer end -->

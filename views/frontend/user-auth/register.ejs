@@ -1,0 +1,49 @@
+<!-- header start -->
+<%- include("../layout/header") %>
+<!-- header end -->
+<!-- content area start -->
+<div class="shortcode-login-regi-area pt-113 pb-120 black-bg-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-xl-6 col-md-12 col-12 ml-auto mr-auto">
+                <div class="pl-65 pr-65">
+                    <div class="login-regi-wrapper">
+                        <div class="login-register-tab-list text-center">
+                            <a class="active">
+                                <h4> Register </h4>
+                            </a>
+                        </div>
+                        <div class="tab-content login-regi-content">
+
+                            <div id="register" class="tab-pane active">
+                                <div class="login-register-form ">
+                                    <form action="#" method="post">
+                                        <input type="text" name="name" placeholder="Full Name">
+                                        <input type="text" name="mobile" placeholder="Mobile Number">
+                                        <input type="text" name="email" placeholder="Email">
+                                        <input  type="password" name="password" placeholder="Password">
+                                        <input type="password" name="confirmPassword" placeholder="Confirm Password">
+                                        <div class="submit-btn">
+                                            <button class="btn-hover" type="submit"><i class="ti-user"></i>  Register</button>
+                                        </div>
+                                    </form>
+                                    <div class="login-social-wrap">
+                                        <p>Or Already Registered? Login Please</p>
+                                        <div class="login-social-btn">
+                                           <a class="facebook" href="/login"><i class="ti-lock"></i> Login</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content area end -->
+<!-- footer start -->
+<%- include("../layout/footer") %>
+<%- include("../layout/close") %>
+<!-- footer end -->
