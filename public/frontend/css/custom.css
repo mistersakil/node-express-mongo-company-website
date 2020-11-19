@@ -23,28 +23,9 @@
     margin: 3px 0 0;
 }
 
-.theme-bg {
-    background: rgb(134 142 150 / 23%);
-}
 
-.cont-info-content>p {
-    color: rgb(51 51 51 / 72%);
-}
-
-.cont-info-icon i {
-    color: #333;
-}
-
-.footer-social li a {
-    color: #333;
-}
-
-.copyright>p {
-    color: #333;
-}
-
-.border-bottom-1 {
-    border-bottom: 1px solid rgb(161 165 170 / 57%);
+.footer-widget .useful-links li a {
+    color: #fff;
 }
 
 .logo .logo-normally-none {
