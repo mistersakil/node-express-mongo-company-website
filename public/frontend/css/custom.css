@@ -47,10 +47,56 @@
     border-bottom: 1px solid rgb(161 165 170 / 57%);
 }
 
+.logo .logo-normally-none {
+    width: 200px;
+    position: absolute;
+    top: -40px;
+}
+
+.header-black .main-menu ul {
+    margin-left: 190px;
+}
+
+.header-black .main-menu ul li a {
+    line-height: 130px;
+}
+
+.stick .logo-sticky-none {
+    margin-top: 0;
+    position: absolute;
+    left: auto;
+    width: 150px;
+    top: -42px;
+}
+
 /*Responsive css*/
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 993px) {
     .nav-style-hm10 .owl-nav {
         bottom: 90px;
         left: 19%;
     }
+}
+
+@media only screen and (max-width: 992px) {
+    .logo .logo-normally-none {
+        width: 230px;
+        top: -80px;
+    }
+
+}
+
+@media only screen and (max-width: 400px) {
+    .logo .logo-normally-none {
+        width: 150px;
+        top: -40px;
+    }
+
+}
+
+@media only screen and (max-width: 300px) {
+    .logo .logo-normally-none {
+        width: 100px;
+        top: -15px;
+    }
+
 }
