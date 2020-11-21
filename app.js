@@ -29,8 +29,8 @@ app.set(`view engine`, `ejs`);
 app.use([
     morgan(`dev`),
     express.json(),
-    express.static(path.join(__dirname, "public")),
     express.urlencoded({ extended: false }),
+    express.static(path.join(__dirname, "public")),
     // session({ secret: `octapia secret token`, store, resave: false, saveUninitialized: false }),
     routes
 
