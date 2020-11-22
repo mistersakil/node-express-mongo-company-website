@@ -7,7 +7,9 @@ module.exports = model(`User`, Schema({
 
     email: { type: String, maxlength: 50, minlength: 5, required: true, trim: true },
 
-    password: { type: String, maxlength: 120, minlength: 8, required: true },
+    mobile: { type: String, maxlength: 14, minlength: 11, required: true, trim: true },
+
+    password: { type: String, maxlength: 200, minlength: 8, required: true },
 
     verifiedAt: { type: Date, default: null },
     // profile: { type: Schema.Types.ObjectId, ref: Profile },
