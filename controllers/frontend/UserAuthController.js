@@ -5,19 +5,17 @@ const validator = require(`express-validator`);
 const { validationResult } = validator;
 const errors = {};
 const formData = {};
+/* user registraition page */
 module.exports.userRegister = (req, res) => {
     res.render(`frontend/user-auth/register`, { metaTitle: `Register`, errors, formData, singlePageTitle: `Registration Is Open` });
 }
-
+/* user registration process */
 module.exports.userRegistrationProcess = async (req, res) => {
 
     let { name, email, mobile, password } = req.body;
     let validationErrors = validationResult(req).formatWith(error => error.msg);
 
     validationErrors = validationErrors.mapped();
-
-    console.log(validationErrors);
-
 
     if (Object.keys(validationErrors).length) {
         res.render(`frontend/user-auth/register`, { metaTitle: `Register`, errors: validationErrors, formData: req.body, singlePageTitle: `Please Fix Following Errors` });
@@ -26,13 +24,11 @@ module.exports.userRegistrationProcess = async (req, res) => {
 
     password = await bcrypt.hash(password, 10);
     let newUser = new User({ name, email, mobile, password });
-    console.log(newUser);
     let userCreated = await newUser.save();
-    console.log(userCreated);
     res.render(`frontend/user-auth/register`, { metaTitle: `Register`, errors, formData, singlePageTitle: `Registration Successful` });
 }
 
-
+/* user registraition page */
 module.exports.userLogin = (req, res) => {
     res.render(`frontend/user-auth/login`, { metaTitle: `Login`, singlePageTitle: `Login to Interaction` });
 }

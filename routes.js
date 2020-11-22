@@ -1,6 +1,6 @@
 const router = require(`express`).Router();
 const { viewsCommonData } = require(`./middlewares/middlewares`);
-/* Validators */
+/* Validations */
 const userRegisterValidation = require(`./validators/userRegisterValidation`);
 
 /* middlewares */

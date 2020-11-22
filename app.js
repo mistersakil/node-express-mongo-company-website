@@ -37,12 +37,6 @@ app.use([
 ]);
 
 
-// app.get(`/`, (req, res) => {
-
-//     res.send('home page <br>' + process.env.DB_CONNECTION + '<br>' + store);
-// });
-
-
 /* database connection */
 mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
     console.log(`Connected to BD`);
