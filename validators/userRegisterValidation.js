@@ -24,7 +24,6 @@ module.exports = [
     .notEmpty()
     .withMessage(`Email can't be empty`)
     .isEmail().withMessage(`Please provide a valid email`)
-    .normalizeEmail()
     .custom(async email => {
 
         let isUserExist = await User.findOne({ email });

@@ -10,12 +10,14 @@ module.exports.userRegister = (req, res) => {
 }
 
 module.exports.userRegistrationProcess = async (req, res) => {
+
     let { name, email, mobile, password } = req.body;
     let validationErrors = validationResult(req).formatWith(error => error.msg);
 
     validationErrors = validationErrors.mapped();
 
     console.log(validationErrors);
+
 
     if (Object.keys(validationErrors).length) {
         res.render(`frontend/user-auth/register`, { metaTitle: `Register`, errors: validationErrors, formData: req.body, singlePageTitle: `Please Fix Following Errors` });
@@ -27,7 +29,7 @@ module.exports.userRegistrationProcess = async (req, res) => {
     console.log(newUser);
     let userCreated = await newUser.save();
     console.log(userCreated);
-    res.render(`frontend/user-auth/register`, { metaTitle: `Register`, singlePageTitle: `Please solve following errors` });
+    res.render(`frontend/user-auth/register`, { metaTitle: `Register`, errors, formData, singlePageTitle: `Registration Successful` });
 }
 
 
