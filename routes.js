@@ -15,7 +15,7 @@ const { blog, blogSingle } = require(`./controllers/frontend/BlogController`);
 const { gallery } = require(`./controllers/frontend/GalleryController`);
 const { portfolio, portfolioSingle } = require(`./controllers/frontend/PortfolioController`);
 const { service, serviceSingle } = require(`./controllers/frontend/ServiceController`);
-const { userRegister, userLogin } = require(`./controllers/frontend/UserAuthController`);
+const { userRegister, userRegistrationProcess, userLogin } = require(`./controllers/frontend/UserAuthController`);
 
 
 /* Routes Frontend */
@@ -31,6 +31,7 @@ router.get(`/portfolio/single`, portfolioSingle);
 router.get(`/services`, service);
 router.get(`/services/single`, serviceSingle);
 router.get(`/register`, userRegister);
+router.post(`/register`, userRegistrationProcess);
 router.get(`/login`, userLogin);
 
 
