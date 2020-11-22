@@ -1,9 +1,11 @@
 const router = require(`express`).Router();
 const { viewsCommonData } = require(`./middlewares/middlewares`);
+/* Validators */
+const userRegisterValidation = require(`./validators/userRegisterValidation`);
 
 /* middlewares */
-
 router.use(`/`, [viewsCommonData]);
+
 
 /* Controllers Frontend */
 
@@ -31,7 +33,7 @@ router.get(`/portfolio/single`, portfolioSingle);
 router.get(`/services`, service);
 router.get(`/services/single`, serviceSingle);
 router.get(`/register`, userRegister);
-router.post(`/register`, userRegistrationProcess);
+router.post(`/register`, userRegisterValidation, userRegistrationProcess);
 router.get(`/login`, userLogin);
 
 
