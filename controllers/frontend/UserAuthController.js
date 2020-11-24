@@ -1,4 +1,4 @@
-const User = require(`../../models/User.js`);
+const models = require(`../../models`);
 const bcrypt = require(`bcrypt`);
 const validator = require(`express-validator`);
 
@@ -23,7 +23,7 @@ module.exports.userRegistrationProcess = async (req, res) => {
     }
 
     password = await bcrypt.hash(password, 10);
-    let newUser = new User({ name, email, mobile, password });
+    let newUser = new models.user({ name, email, mobile, password });
     let userCreated = await newUser.save();
     res.render(`frontend/user-auth/register`, { metaTitle: `Register`, errors, formData, singlePageTitle: `Registration Successful` });
 }

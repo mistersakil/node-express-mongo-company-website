@@ -1,7 +1,7 @@
 const { model, Schema } = require(`mongoose`);
 // const Profile = require(`./Profile`);
 // name, email, password, profile ref
-module.exports = model(`User`, Schema({
+const newSchema = new Schema({
 
     name: { type: String, maxlength: 100, minlength: 5, required: true, trim: true },
 
@@ -14,4 +14,7 @@ module.exports = model(`User`, Schema({
     verifiedAt: { type: Date, default: null },
     // profile: { type: Schema.Types.ObjectId, ref: Profile },
 
-}, { timestamps: true }));
+}, { timestamps: true });
+
+
+module.exports = new model(`users`, newSchema);

@@ -1,6 +1,6 @@
 const validator = require(`express-validator`);
 
-const User = require(`../models/User`);
+const models = require(`../models`);
 
 const { body } = validator;
 
@@ -26,7 +26,7 @@ module.exports = [
     .isEmail().withMessage(`Please provide a valid email`)
     .custom(async email => {
 
-        let isUserExist = await User.findOne({ email });
+        let isUserExist = await models.user.findOne({ email });
 
         if (isUserExist) {
 
