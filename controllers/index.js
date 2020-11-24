@@ -1,16 +1,5 @@
 /* Controllers Frontend */
 
-// const { fourOfour } = require(`./frontend/ErrorController`);
-// const { home } = require(`./frontend/HomeController`);
-// const { contact } = require(`./frontend/ContactController`);
-// const { about } = require(`./frontend/AboutController`);
-// const { blog, blogSingle } = require(`./frontend/BlogController`);
-// const { gallery } = require(`./frontend/GalleryController`);
-// const { portfolio, portfolioSingle } = require(`./frontend/PortfolioController`);
-// const { service, serviceSingle } = require(`./frontend/ServiceController`);
-// const { userRegister, userRegistrationProcess, userLogin } = require(`./frontend/UserAuthController`);
-
-
 const ErrorController = require(`./frontend/ErrorController`);
 const HomeController = require(`./frontend/HomeController`);
 const ContactController = require(`./frontend/ContactController`);

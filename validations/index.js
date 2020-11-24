@@ -1,5 +1,3 @@
-/* Controllers Frontend */
-// const userRegisterValidation = require(`./userRegisterValidation`);
+const userRegisterValidation = require(`./userRegisterValidation`);
 
-// module.exports = { userRegisterValidation };
-
+module.exports = { userRegisterValidation };
