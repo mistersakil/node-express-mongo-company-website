@@ -21,4 +21,4 @@ const PortfolioController = require(`./frontend/PortfolioController`);
 const ServiceController = require(`./frontend/ServiceController`);
 const UserAuthController = require(`./frontend/UserAuthController`);
 
-module.exports = { ...ErrorController, ...HomeController, ...ContactController, ...AboutController, ...BlogController, ...GalleryController, ...PortfolioController, ...ServiceController, ...UserAuthController };
+module.exports = { frontend: { ...ErrorController, ...HomeController, ...ContactController, ...AboutController, ...BlogController, ...GalleryController, ...PortfolioController, ...ServiceController, ...UserAuthController } };
