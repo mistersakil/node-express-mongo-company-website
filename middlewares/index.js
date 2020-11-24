@@ -1,6 +1,4 @@
-const {
-    dateFormat
-} = require(`../utils/helpers`);
+const { dateFormat } = require(`../utils/helpers`);
 
 const redirectToLoginPage = (req, res, next) => {
     if (req.session.isLoggedIn) {
@@ -15,7 +13,7 @@ const redirectToAdminPage = (req, res, next) => {
     return next();
 }
 
-const viewsCommonData = (req, res, next) => {
+const dataForAllViews = (req, res, next) => {
     // const { isLoggedIn, user } = req.session;
     res.locals = {
         dateFormat,
@@ -24,4 +22,4 @@ const viewsCommonData = (req, res, next) => {
     }
     return next();
 }
-module.exports = { redirectToLoginPage, redirectToAdminPage, viewsCommonData }
+module.exports = { redirectToLoginPage, redirectToAdminPage, dataForAllViews }

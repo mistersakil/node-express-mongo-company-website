@@ -7,6 +7,7 @@ const mongoDbSessionStore = require('connect-mongodb-session')(session);
 require(`dotenv/config`);
 const routes = require(`./appRoutes`);
 const databaseConnection = require(`./appDB`);
+const { dataForAllViews } = require(`./middlewares`);
 
 const app = express();
 const port = process.env.PORT || 3333;
@@ -21,6 +22,7 @@ app.set(`view engine`, `ejs`);
 /* middlewares */
 app.use([
     // morgan(`dev`),
+    dataForAllViews,
     express.json(),
     express.urlencoded({ extended: false }),
     express.static(path.join(__dirname, "public")),
