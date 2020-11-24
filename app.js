@@ -5,11 +5,11 @@ const morgan = require(`morgan`);
 const session = require(`express-session`);
 const mongoDbSessionStore = require('connect-mongodb-session')(session);
 require(`dotenv/config`);
+const routes = require(`./appRoutes`);
+const databaseConnection = require(`./appDB`);
+
 const app = express();
-const routes = require(`./routes`);
-
-
-const PORT = process.env.PORT || 3333;
+const port = process.env.PORT || 3333;
 
 
 /* set view engine */
@@ -20,7 +20,7 @@ app.set(`view engine`, `ejs`);
 
 /* middlewares */
 app.use([
-    // morgan(`dev`),
+    morgan(`dev`),
     express.json(),
     express.urlencoded({ extended: false }),
     express.static(path.join(__dirname, "public")),
@@ -28,14 +28,9 @@ app.use([
 
 ]);
 
-
 /* database connection */
-mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
-    console.log(`Connected to DB`);
-    app.listen(PORT, () => {
-        console.log(`Server running on port ${PORT}`);
-    })
-});
+databaseConnection({ mongoose, dbConnectionString: process.env.DB_CONNECTION_STRING, port, app });
+
 
 /* 3 layer architecture
     controllers = controller layer : process the http request
