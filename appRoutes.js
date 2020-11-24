@@ -8,7 +8,7 @@ router.use(`/`, [viewsCommonData]);
 
 
 /* Controllers Frontend */
-const frontend = require(`./controllers/frontend`);
+const frontend = require(`./controllers`);
 
 
 /* Routes Frontend */
