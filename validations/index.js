@@ -1,3 +1,3 @@
-const userRegisterValidation = require(`./userRegisterValidation`);
+const registrationFormValidation = require(`./registrationFormValidation`);
 
-module.exports = { userRegisterValidation };
+module.exports = { registrationFormValidation };

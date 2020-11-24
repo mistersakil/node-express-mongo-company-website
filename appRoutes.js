@@ -1,7 +1,7 @@
 const router = require(`express`).Router();
 
 /* Validations */
-const { userRegisterValidation } = require(`./validations`);
+const { registrationFormValidation } = require(`./validations`);
 
 /* Controllers Frontend */
 const { frontend } = require(`./controllers`);
@@ -19,9 +19,9 @@ router.get(`/portfolio`, frontend.portfolio);
 router.get(`/portfolio/single`, frontend.portfolioSingle);
 router.get(`/services`, frontend.service);
 router.get(`/services/single`, frontend.serviceSingle);
-router.get(`/register`, frontend.userRegister);
-router.post(`/register`, userRegisterValidation, frontend.userRegistrationProcess);
-router.get(`/login`, frontend.userLogin);
+router.get(`/register`, frontend.register);
+router.post(`/register`, registrationFormValidation, frontend.registrationProcess);
+router.get(`/login`, frontend.login);
 
 
 router.get(`*`, frontend.fourOfour);

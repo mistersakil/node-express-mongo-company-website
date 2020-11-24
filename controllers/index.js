@@ -8,6 +8,6 @@ const BlogController = require(`./frontend/BlogController`);
 const GalleryController = require(`./frontend/GalleryController`);
 const PortfolioController = require(`./frontend/PortfolioController`);
 const ServiceController = require(`./frontend/ServiceController`);
-const UserAuthController = require(`./frontend/UserAuthController`);
+const authController = require(`./frontend/authController`);
 
-module.exports = { frontend: { ...ErrorController, ...HomeController, ...ContactController, ...AboutController, ...BlogController, ...GalleryController, ...PortfolioController, ...ServiceController, ...UserAuthController } };
+module.exports = { frontend: { ...ErrorController, ...HomeController, ...ContactController, ...AboutController, ...BlogController, ...GalleryController, ...PortfolioController, ...ServiceController, ...authController } };
