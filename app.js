@@ -20,7 +20,7 @@ app.set(`view engine`, `ejs`);
 
 /* middlewares */
 app.use([
-    morgan(`dev`),
+    // morgan(`dev`),
     express.json(),
     express.urlencoded({ extended: false }),
     express.static(path.join(__dirname, "public")),
