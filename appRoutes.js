@@ -25,11 +25,11 @@ router.get(`/login`, frontend.login);
 
 
 /* Routes Backend */
-
-// router.get('/admin/users', backend.users);
-// router.get('/admin', backend.dashboard);
-// router.get('/admin/*', backend.fourOfour);
-
+/*
+router.get('/admin/users', backend.users);
+router.get('/admin', backend.dashboard);
+router.get('/admin/*', backend.fourOfour);
+*/
 /* Routes Not Found */
 router.get(`*`, frontend.fourOfour);
 
