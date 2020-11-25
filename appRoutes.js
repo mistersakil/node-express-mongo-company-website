@@ -4,7 +4,7 @@ const router = require(`express`).Router();
 const { registrationFormValidation } = require(`./validations`);
 
 /* Controllers Frontend */
-const { frontend, backend } = require(`./controllers`);
+const { frontend } = require(`./controllers`);
 
 
 /* Routes Frontend */
@@ -27,7 +27,7 @@ router.get(`/login`, frontend.login);
 /* Routes Backend */
 
 // router.get('/admin/users', backend.users);
-router.get('/admin', backend.dashboard);
+// router.get('/admin', backend.dashboard);
 // router.get('/admin/*', backend.fourOfour);
 
 /* Routes Not Found */
