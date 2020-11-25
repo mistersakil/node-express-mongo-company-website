@@ -1,13 +1,13 @@
 /* Controllers Frontend */
 
 const errorController = require(`./frontend/errorController`);
-const HomeController = require(`./frontend/HomeController`);
-const ContactController = require(`./frontend/ContactController`);
-const AboutController = require(`./frontend/AboutController`);
-const BlogController = require(`./frontend/BlogController`);
-const GalleryController = require(`./frontend/GalleryController`);
-const PortfolioController = require(`./frontend/PortfolioController`);
-const ServiceController = require(`./frontend/ServiceController`);
+const homeController = require(`./frontend/homeController`);
+const contactController = require(`./frontend/contactController`);
+const aboutController = require(`./frontend/aboutController`);
+const blogController = require(`./frontend/blogController`);
+const galleryController = require(`./frontend/galleryController`);
+const portfolioController = require(`./frontend/portfolioController`);
+const serviceController = require(`./frontend/serviceController`);
 const authController = require(`./frontend/authController`);
 
 /* Controllers Backend */
@@ -15,4 +15,4 @@ const authController = require(`./frontend/authController`);
 const dashboardBackendController = require(`./backend/dashboardController`);
 const userBackendController = require(`./backend/userController`);
 
-module.exports = { frontend: { ...errorController, ...HomeController, ...ContactController, ...AboutController, ...BlogController, ...GalleryController, ...PortfolioController, ...ServiceController, ...authController }, backend: { ...dashboardBackendController, ...userBackendController } };
+module.exports = { frontend: { ...errorController, ...homeController, ...contactController, ...aboutController, ...blogController, ...galleryController, ...portfolioController, ...serviceController, ...authController }, backend: { ...dashboardBackendController, ...userBackendController } };
