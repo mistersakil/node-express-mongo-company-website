@@ -3,20 +3,7 @@
     <div class="col-md-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb breadcrumb-custom">
-                        <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
-                        <li class="breadcrumb-item active">users</li>
-                        <li class="pull-right-addon">
-                            <a href="/admin/users/create" class="btn btn-primary btn-sm">
-                                <i class="fa fa-plus"></i> New
-                            </a>
-                            <a href="/admin/users" class="btn btn-success btn-sm">
-                                <i class="fa fa-th-list"></i> List
-                            </a>
-                        </li>
-                    </ol>
-                </nav>
+                <%- include("../partials/top-link") %>
                 <p class="card-title mb-0">Users</p>
                 <div class="table-responsive">
                     <table id="order-listing" class="table table-striped">
@@ -32,41 +19,41 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <% if(users.length) { let i = 0; %>
-                            <% users.forEach(user => { ++i; %>
+                            <% if(models.length) { let i = 0; %>
+                            <% models.forEach(model => { ++i; %>
                             <tr>
                                 <td>
                                     <%= i %>
                                 </td>
                                 <td>
-                                    <%=user.name%>
+                                    <%=model.name%>
                                 </td>
                                 <td>
-                                    <%=user.email%>
+                                    <%=model.email%>
                                 </td>
                                 <td>
-                                    <%=dateFormat(user.createdAt)%>
+                                    <%=dateFormat(model.createdAt)%>
                                 </td>
                                 <td>
-                                    <%=dateFormat(user.updatedAt,2)%>
+                                    <%=dateFormat(model.updatedAt,2)%>
                                 </td>
                                 <td>
-                                    <% if(user.verifiedAt !== null){ %>
+                                    <% if(model.verifiedAt !== null){ %>
                                     <label class="badge badge-success">
-                                        <%=dateFormat(user.verifiedAt,3)%>
+                                        <%=dateFormat(model.verifiedAt,3)%>
                                     </label>
                                     <% }else{ %>
                                     <label class="badge badge-danger">Pending</label>
                                     <% } %>
                                 </td>
                                 <td class="text-center">
-                                    <a href="/" class="btn btn-warning">
+                                    <a href="/" class=" btn-warning">
                                         <i class="fa fa-pencil"></i>
                                     </a>
-                                    <a href="/" class="btn btn-primary">
+                                    <a href="/" class=" btn-primary">
                                         <i class="fa fa-eye"></i>
                                     </a>
-                                    <a href="/" class="btn btn-danger">
+                                    <a href="/" class=" btn-danger">
                                         <i class="fa fa-trash"></i>
                                     </a>
                                 </td>
