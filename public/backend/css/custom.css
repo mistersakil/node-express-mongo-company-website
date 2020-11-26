@@ -24,3 +24,12 @@ table.dataTable tbody a {
     line-height: 16px;
     border-radius: 5px;
 }
+
+.content-wrapper {
+    padding: 5px 0 0 0;
+}
+
+.topLinkPageTitle {
+    position: absolute;
+    left: 2%;
+}

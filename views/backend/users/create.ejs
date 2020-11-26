@@ -1,0 +1,55 @@
+<%- include("../layout/header") %>
+<div class="row grid-margin">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <%- include("../partials/top-link") %>
+                <form method="post" action="<%= create %>">
+                    <div class="form-group row">
+                        <div class="col-lg-3">
+                            <label for="name" class="col-form-label">Full Name <sup title="Required"><i class="fa fa-star text-danger"></i></sup> </label>
+                        </div>
+                        <div class="col-lg-8">
+                            <input id="name" class="form-control" maxlength="50" name="name" type="text">
+                            <label class="error mt-2 text-secondary" for="name">Required, minimum 5 characters. Ex: Sakil Jomaddar</label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-3">
+                            <label for="mobile" class="col-form-label">Mobile <sup title="Required"><i class="fa fa-star text-danger"></i></sup> </label>
+                        </div>
+                        <div class="col-lg-8">
+                            <input id="mobile" class="form-control" maxlength="50" name="mobile" type="text">
+                            <label class="error mt-2 text-secondary" for="mobile">Required, minimum 11 characters. Ex: +88 01720092787</label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-3">
+                            <label for="email" class="col-form-label">Email <sup title="Required"><i class="fa fa-star text-danger"></i></sup> </label>
+                        </div>
+                        <div class="col-lg-8">
+                            <input id="email" class="form-control" maxlength="50" name="email" type="text">
+                            <label class="error mt-2 text-secondary" for="email">Required, valid email, minimum 10 characters. Ex: example@domain.com</label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-3">
+                            <label for="password" class="col-form-label">Password <sup title="Required"><i class="fa fa-star text-danger"></i></sup> </label>
+                        </div>
+                        <div class="col-lg-8">
+                            <input id="password" class="form-control" maxlength="50" name="password" type="password">
+                            <label class="error mt-2 text-secondary" for="password">Required, minimum 6 characters. Ex: password@24#</label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-4 offset-lg-3">
+                            <input class="btn btn-primary btn-block" type="submit" value="Submit">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include("../layout/footer") %>
+<%- include("../layout/close") %>

@@ -26,11 +26,14 @@ router.get(`/login`, frontend.login);
 
 /* Routes Backend */
 
-router.get('/admin/users', backend.users);
 router.get('/admin', backend.dashboard);
-router.get('/admin/*', backend.fourOfour);
+router.get('/admin/users', backend.userRead);
+router.get('/admin/users/create', backend.userCreate);
+router.post('/admin/users/create', backend.userCreateProcess);
+
 
 /* Routes Not Found */
+router.get('/admin/*', backend.fourOfour);
 router.get(`*`, frontend.fourOfour);
 
 module.exports = router;

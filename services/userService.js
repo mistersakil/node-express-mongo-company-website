@@ -6,10 +6,14 @@ module.exports.create = async (formData) => {
     try {
         password = await bcrypt.hash(password, 10);
         let newModel = new model({ name, email, mobile, password });
-        let modelCreated = await newModel.save();
-        return modelCreated;
+        return await newModel.save();
+
     } catch (error) {
         throw new Error(`User Creation Failed`);
     }
 
+}
+
+module.exports.read = async () => {
+    return await model.find({});
 }
