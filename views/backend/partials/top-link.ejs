@@ -1,17 +1,17 @@
 <nav>
     <ul class="pagination d-flex flex-wrap pagination-rounded-separated justify-content-end  pagination-danger">
         <li class="page-item topLinkPageTitle">
-            <div class="badge badge-outline-primary badge-pill">
-                <%= metaTitle %>
+            <div class="badge badge-outline-secondary badge-pill">
+                <%= singlePageTitle || metaTitle %>
             </div>
         </li>
         <li class="page-item">
-            <a href="<%= create %>" class="btn btn-primary btn-sm">
+            <a href="<%= create %>" class="btn btn-secondary btn-sm">
                 <i class="fa fa-plus"></i> New
             </a>
         </li>
         <li class="page-item">
-            <a href="<%= read %>" class="btn btn-success btn-sm">
+            <a href="<%= read %>" class="btn btn-secondary btn-sm">
                 <i class="fa fa-th-list"></i> List
             </a>
         </li>

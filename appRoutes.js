@@ -29,7 +29,7 @@ router.get(`/login`, frontend.login);
 router.get('/admin', backend.dashboard);
 router.get('/admin/users', backend.userRead);
 router.get('/admin/users/create', backend.userCreate);
-router.post('/admin/users/create', backend.userCreateProcess);
+router.post('/admin/users/create', registrationFormValidation, backend.userCreateProcess);
 
 
 /* Routes Not Found */

@@ -10,8 +10,8 @@ module.exports = [
     .trim()
     .notEmpty()
     .withMessage(`Name can't be empty`)
-    .isLength({ min: 3, max: 30 })
-    .withMessage(`Name should be at least 3 character`),
+    .isLength({ min: 5, max: 50 })
+    .withMessage(`Name character length is 5 to 50`),
 
     body(`mobile`)
     .trim()
@@ -41,7 +41,7 @@ module.exports = [
     .notEmpty()
     .withMessage(`Password can't be empty`)
     .isLength({ min: 5, max: 30 })
-    .withMessage(`Password should be at least 5 characters`),
+    .withMessage(`Password character length 6 to 30`),
 
     body(`confirmPassword`)
     .notEmpty()
