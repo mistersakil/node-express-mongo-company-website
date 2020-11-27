@@ -4,7 +4,6 @@
         <div class="card">
             <div class="card-body">
                 <%- include("../partials/top-link") %>
-
                 <div class="table-responsive">
                     <table id="order-listing" class="table table-striped">
                         <thead>
@@ -36,14 +35,15 @@
                                 </td>
                                 <td>
                                     <% if(model.verifiedAt !== null){ %>
-                                    <label class="badge badge-success">
+                                    <div class="badge badge-outline-info badge-pill">
                                         <%=dateFormat(model.verifiedAt,3)%>
-                                    </label>
+                                    </div>
                                     <% }else{ %>
-                                    <label class="badge badge-secondary">No</label>
+                                    <div class="badge badge-outline-secondary badge-pill">
+                                        Pending
+                                    </div>
                                     <% } %>
                                 </td>
-
                                 <td>
                                     <% if(model.userType ==1){ %>
                                     User
