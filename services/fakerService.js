@@ -5,7 +5,7 @@ const { name, phone, internet, date } = require(`faker/locale/en_IND`);
 
 mongoose.connect(`mongodb+srv://root:root@cluster0.btmjp.mongodb.net/blog`, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
     console.log(`Connected to DB`);
-    create(100).then(lastData => console.log('Finished', lastData));
+    create(30).then(lastData => console.log('Finished', lastData));
 
 });
 
