@@ -47,9 +47,17 @@
                                 <td>
                                     <% if(model.userType ==1){ %>
                                     User
-                                    <% }else if(model.userType >= 9){
+                                    <% }else if(model.userType >= 9){ %>
                                         Admin
-                                    } %>
+                                    <% }else if(model.userType == 8){ %>
+                                        Manager
+                                    <% }else if(model.userType == 7){ %>
+                                        Author
+                                    <% }else if(model.userType == 6){ %>
+                                        Editor
+                                    <% }else{ %>
+                                        Undefined
+                                    <% } %>
                                 </td>
                                 <td class="text-center">
                                     <a href="/" class="btn-warning">
