@@ -1,6 +1,7 @@
 const { user: model } = require(`../models`);
 const bcrypt = require(`bcrypt`);
 
+/* Create new */
 module.exports.create = async (formData) => {
     let { name, email, mobile, password, verifiedAt, userType } = formData;
     try {
@@ -13,11 +14,18 @@ module.exports.create = async (formData) => {
     }
 
 }
+/* Read all */
+module.exports.read = async (filterParams = {}) => {
 
-module.exports.read = async () => {
-    let res = await model.find({}).where('userType').equals('9');
+    let filterOptions = {};
+    if (Object.keys(filterParams).length) {
+        for (property in filterParams) {
+            if (filterParams[property]) {
+                filterOptions[property] = filterParams[property];
+            }
+        }
+    }
 
-    console.log(res);
+    return await model.find(filterOptions).limit(10).sort();
 
-    return await model.find({});
 }

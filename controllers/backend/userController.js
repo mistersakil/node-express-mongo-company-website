@@ -15,9 +15,14 @@ const userTypes = [
 
 /* Read all */
 module.exports.userRead = async (req, res) => {
-    console.log(req.body)
-    let models = await userService.read();
-    res.render(`backend/users/users`, { metaTitle: `Users`, models, formData: req.body, ...topLinks, singlePageTitle: `User List`, userTypes });
+    let models = [];
+    try {
+        models = await userService.read(req.body);
+        res.render(`backend/users/users`, { metaTitle: `Users`, models, formData: req.body, ...topLinks, singlePageTitle: `User List`, userTypes });
+    } catch (error) {
+        res.render(`backend/users/users`, { metaTitle: `Users`, models, formData: req.body, ...topLinks, singlePageTitle: `User List`, userTypes });
+    }
+
 }
 
 

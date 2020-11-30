@@ -7,9 +7,22 @@
                 <!-- Filter Form -->
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Filter User</h4>
+                        <h4 class="card-title">Filter User
+                            <%- formData.name ? `<span class="text-primary">by name = ${formData.name}</span>` : `` %>
+                            <%- formData.mobile ? `<span class="text-success">by mobile = ${formData.mobile}</span>` : `` %>
+                            <%- formData.email ? `<span class="text-danger">by email = ${formData.email}</span>` : `` %>
+                            <% if(formData.userType){
+                                userTypeName = ``;
+                                userTypes.forEach(userType =>{
+                                   if(userType.label == parseInt(formData.userType)){
+                                    userTypeName =  userType.name ;
+                                   }
+                                })
+                            %>
+                            <%- `<span class="text-dark">by User Type = ${userTypeName}</span>` %>
+                            <% } %>
+                        </h4>
                         <form class="form-inline" method="post" action="/admin/users">
-                            <input type="hidden" name="type" value="filter">
                             <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Name" name="name" value="<%= formData.name %>" />
                             <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Mobile" name="mobile" value="<%= formData.mobile %>" />
                             <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Email" name="email" value="<%= formData.email %>" />
@@ -33,9 +46,9 @@
                         <thead>
                             <tr>
                                 <th>Name</th>
+                                <th>Mobile</th>
                                 <th>Email</th>
                                 <th>Created At</th>
-                                <th>Updated At</th>
                                 <th>Verified</th>
                                 <th>Type</th>
                                 <th class="text-center">Actions</th>
@@ -49,10 +62,10 @@
                                     <%=model.name%>
                                 </td>
                                 <td>
-                                    <%=model.email%>
+                                    <%=model.mobile%>
                                 </td>
                                 <td>
-                                    <%=dateFormat(model.createdAt)%>
+                                    <%=model.email%>
                                 </td>
                                 <td>
                                     <%=dateFormat(model.updatedAt)%>
@@ -96,6 +109,12 @@
                                 </td>
                             </tr>
                             <% }) %>
+                            <% }else{ %>
+                            <tr>
+                                <td colspan="7">
+                                    <h5>Nothing Found</h5>
+                                </td>
+                            </tr>
                             <% } %>
                         </tbody>
                     </table>
