@@ -5,24 +5,25 @@ const { validationResult } = validator;
 const errors = {};
 const formData = {};
 let success = false;
+const userTypes = [
+    { name: `Admin`, label: 9 },
+    { name: `Manager`, label: 8 },
+    { name: `Author`, label: 7 },
+    { name: `Editor`, label: 6 },
+    { name: `User`, label: 1 }
+];
 
 /* Read all */
 module.exports.userRead = async (req, res) => {
     console.log(req.body)
-    let models = await userService.read({});
-    res.render(`backend/users/users`, { metaTitle: `Users`, models, formData, ...topLinks, singlePageTitle: `User List` });
+    let models = await userService.read();
+    res.render(`backend/users/users`, { metaTitle: `Users`, models, formData: req.body, ...topLinks, singlePageTitle: `User List`, userTypes });
 }
-
-/* Read all after filter */
-// module.exports.userReadByFilter = async (req, res) => {
-//     let models = await userService.read({});
-//     res.render(`backend/users/users`, { metaTitle: `Users`, models, ...topLinks, singlePageTitle: `User List` });
-// }
 
 
 /* Create form */
 module.exports.userCreate = async (req, res) => {
-    let models = await userService.read({});
+    let models = await userService.read();
     res.render(`backend/users/create`, { metaTitle: `Create New User`, errors, success, formData, ...topLinks });
 }
 

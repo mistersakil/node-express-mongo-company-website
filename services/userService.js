@@ -15,5 +15,9 @@ module.exports.create = async (formData) => {
 }
 
 module.exports.read = async () => {
+    let res = await model.find({}).where('userType').equals('9');
+
+    console.log(res);
+
     return await model.find({});
 }

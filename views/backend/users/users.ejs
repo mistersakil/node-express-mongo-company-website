@@ -10,19 +10,19 @@
                         <h4 class="card-title">Filter User</h4>
                         <form class="form-inline" method="post" action="/admin/users">
                             <input type="hidden" name="type" value="filter">
-                            <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Name" name="name" />
-                            <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Mobile" name="mobile" />
-                            <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Email" name="email" />
+                            <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Name" name="name" value="<%= formData.name %>" />
+                            <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Mobile" name="mobile" value="<%= formData.mobile %>" />
+                            <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Email" name="email" value="<%= formData.email %>" />
                             <select class="form-control mb-2 mr-sm-2" name="userType">
                                 <option value="0" selected disabled>User Type</option>
-                                <option value="9">Admin</option>
-                                <option value="8">Manager</option>
-                                <option value="7">Author</option>
-                                <option value="6">Editor</option>
-                                <option value="1">User</option>
+                                <% userTypes.forEach(userType =>{ %>
+                                <option value="<%= userType.label %>" <%=userType.label==formData.userType ? `selected` : ``%> >
+                                    <%= userType.name %>
+                                </option>
+                                <% }) %>
                             </select>
                             <button type="submit" class="btn btn-dark mb-2 mr-sm-2">Search</button>
-                            <input type="reset" class="btn btn-secondary mb-2 mr-sm-2" value="Reset" />
+                            <a href="/admin/users" class="btn btn-secondary mb-2 mr-sm-2">Reset</a>
                         </form>
                     </div>
                 </div>
