@@ -16,6 +16,12 @@ module.exports.create = async (formData) => {
 }
 /* Read all */
 module.exports.read = async (filterParams = {}) => {
+    let totalRecords = 0;
+    try {
+        totalRecords = await model.countDocuments();
+    } catch (error) {
+        console.log(error)
+    }
 
     let filterOptions = {};
     if (Object.keys(filterParams).length) {
@@ -26,6 +32,6 @@ module.exports.read = async (filterParams = {}) => {
         }
     }
 
-    return await model.find(filterOptions).limit(10).sort();
+    return await model.find(filterOptions).limit(totalRecords).sort();
 
 }
