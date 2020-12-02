@@ -9,4 +9,4 @@
 * Heroku - To deploy this application
 
 ## Demo Link
-* https://octapia-blog-dev.herokuapp.com/
+* https://octapiadotcom.herokuapp.com/
