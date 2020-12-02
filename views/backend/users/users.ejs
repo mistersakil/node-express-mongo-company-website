@@ -23,14 +23,14 @@
                             <% } %>
                         </h4>
                         <form class="form-inline" method="post" action="/admin/users">
-                            <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Name" name="name" value="<%= formData.name %>" />
-                            <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Mobile" name="mobile" value="<%= formData.mobile %>" />
-                            <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Email" name="email" value="<%= formData.email %>" />
+                            <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Name" name="name" value="<%= formData.name ? formData.name.trim() : null %>" />
+                            <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Mobile" name="mobile" value="<%= formData.mobile ? formData.mobile.trim() : null %>" />
+                            <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Email" name="email" value="<%= formData.email ? formData.email.trim() : null %>" />
                             <select class="form-control mb-2 mr-sm-2" name="userType">
                                 <option value="0" selected disabled>User Type</option>
                                 <% userTypes.forEach(userType =>{ %>
                                 <option value="<%= userType.label %>" <%=userType.label==formData.userType ? `selected` : ``%> >
-                                    <%= userType.name %>
+                                    <%= userType.name%>
                                 </option>
                                 <% }) %>
                             </select>

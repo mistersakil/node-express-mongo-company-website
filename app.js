@@ -5,7 +5,7 @@ const morgan = require(`morgan`);
 const session = require(`express-session`);
 const mongoDbSessionStore = require('connect-mongodb-session')(session);
 require(`dotenv/config`);
-const routes = require(`./appRoutes`);
+const routes = require(`./routes`);
 const databaseConnection = require(`./appDB`);
 const { dataForAllViews } = require(`./middlewares`);
 
