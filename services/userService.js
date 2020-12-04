@@ -3,11 +3,15 @@ const bcrypt = require(`bcrypt`);
 
 /* Create new */
 module.exports.create = async (formData) => {
-    let { name, email, mobile, password, verifiedAt, userType } = formData;
     try {
-        password = await bcrypt.hash(password, 10);
-        let newModel = new model({ name, email: email.toLowerCase(), mobile, password, verifiedAt, userType: parseInt(userType) });
-        return await newModel.save();
+        formData.password = await bcrypt.hash(formData.password, 10);
+        formData.email = formData.email.toLowerCase();
+        formData.userType != undefined ? parseInt(formData.userType) : null;
+        let newModel = new model(formData);
+        console.log(newModel);
+        let createdModel = newModel.save();
+        console.log(createdModel);
+        return createdModel;
 
     } catch (error) {
         throw new Error(`User Creation Failed`);
@@ -16,14 +20,14 @@ module.exports.create = async (formData) => {
 }
 /* Read all */
 module.exports.read = async (filterParams = {}) => {
-    let totalRecords = 0;
+    let perPage = 0;
+    let filterOptions = {};
     try {
-        totalRecords = await model.countDocuments();
+        perPage = await model.countDocuments();
     } catch (error) {
-        console.log(error)
+        throw new Error(`User Not Found`)
     }
 
-    let filterOptions = {};
     if (Object.keys(filterParams).length) {
         for (property in filterParams) {
             if (filterParams[property]) {
@@ -31,7 +35,19 @@ module.exports.read = async (filterParams = {}) => {
             }
         }
     }
+    console.log(filterOptions);
+    /* User type selection for all */
+    if (filterOptions.userType && filterOptions.userType === `*`) {
+        delete filterOptions.userType;
+    }
+    /* Per page selection */
+    if (filterOptions.perPage && filterOptions.perPage !== `*`) {
+        perPage = parseInt(filterOptions.perPage);
+    }
+    delete filterOptions.perPage;
+    console.log(filterOptions);
 
-    return await model.find(filterOptions).limit(totalRecords).sort();
+
+    return await model.find(filterOptions).limit(perPage).sort();
 
 }

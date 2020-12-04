@@ -5,11 +5,11 @@ const { name, phone, internet, date } = require(`faker/locale/en_IND`);
 
 mongoose.connect(`mongodb+srv://root:root@cluster0.btmjp.mongodb.net/blog`, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
     console.log(`Connected to DB`);
-    create(30).then(lastData => console.log('Finished', lastData));
+    create(100).then(lastData => console.log('Finished', lastData));
 
 });
 
-let create = async (howMnay = 10) => {
+const create = async (howMnay = 10) => {
     let data = {};
     let password = null;
     let newModel = null;
@@ -21,7 +21,7 @@ let create = async (howMnay = 10) => {
             email: internet.email(),
             mobile: phone.phoneNumber(),
             verifiedAt: date.past(),
-            userType: Math.ceil(Math.random() * 10)
+            userType: getUserType()
 
         }
 
@@ -33,4 +33,11 @@ let create = async (howMnay = 10) => {
 
     }
     return createdModel;
+}
+
+const getUserType = () => {
+    let userType = [1, 6, 7, 8, 9];
+    let randomNumber = parseInt(Math.floor(Math.random() * 10));
+    return userType.includes(randomNumber) ? randomNumber : 1;
+
 }

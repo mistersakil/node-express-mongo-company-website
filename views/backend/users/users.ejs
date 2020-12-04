@@ -14,23 +14,30 @@
                             <% if(formData.userType){
                                 userTypeName = ``;
                                 userTypes.forEach(userType =>{
-                                   if(userType.label == parseInt(formData.userType)){
-                                    userTypeName =  userType.name ;
+                                   if(userType.value == formData.userType){
+                                    userTypeName =  userType.label ;
                                    }
                                 })
                             %>
                             <%- `<span class="text-dark">by User Type = ${userTypeName}</span>` %>
                             <% } %>
                         </h4>
-                        <form class="form-inline" method="post" action="/admin/users">
+                        <form class="form-inline" method="post" action="<%=links.read%>">
                             <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Name" name="name" value="<%= formData.name ? formData.name.trim() : null %>" />
                             <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Mobile" name="mobile" value="<%= formData.mobile ? formData.mobile.trim() : null %>" />
                             <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Email" name="email" value="<%= formData.email ? formData.email.trim() : null %>" />
                             <select class="form-control mb-2 mr-sm-2" name="userType">
-                                <option value="0" selected disabled>User Type</option>
+
                                 <% userTypes.forEach(userType =>{ %>
-                                <option value="<%= userType.label %>" <%=userType.label==formData.userType ? `selected` : ``%> >
-                                    <%= userType.name%>
+                                <option value="<%= userType.value %>" <%=userType.value==formData.userType ? `selected` : ``%> >
+                                    <%= userType.label%>
+                                </option>
+                                <% }) %>
+                            </select>
+                            <select class="form-control mb-2 mr-sm-2" name="perPage">
+                                <% perPageItems.forEach(perPage =>{ %>
+                                <option value="<%= perPage.value %>" <%=perPage.value==formData.perPage ? `selected` : ``%> >
+                                    <%= perPage.label%>
                                 </option>
                                 <% }) %>
                             </select>
