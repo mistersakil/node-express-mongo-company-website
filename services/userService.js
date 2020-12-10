@@ -8,11 +8,7 @@ module.exports.create = async (formData) => {
         formData.email = formData.email.toLowerCase();
         formData.userType != undefined ? parseInt(formData.userType) : null;
         let newModel = new model(formData);
-        console.log(newModel);
-        let createdModel = newModel.save();
-        console.log(createdModel);
-        return createdModel;
-
+        return newModel.save();
     } catch (error) {
         throw new Error(`User Creation Failed`);
     }
@@ -20,10 +16,11 @@ module.exports.create = async (formData) => {
 }
 /* Read all */
 module.exports.read = async (filterParams = {}) => {
-    let perPage = 0;
+    let perPage = 10;
+    let skip = 0;
     let filterOptions = {};
     try {
-        perPage = await model.countDocuments();
+        // perPage = await model.countDocuments();
     } catch (error) {
         throw new Error(`User Not Found`)
     }
@@ -35,7 +32,11 @@ module.exports.read = async (filterParams = {}) => {
             }
         }
     }
-    console.log(filterOptions);
+    /* Skip documents */
+    if (filterOptions.pageNumber) {
+        skip = (parseInt(filterOptions.pageNumber) - 1) * perPage;
+        delete filterOptions.pageNumber;
+    }
     /* User type selection for all */
     if (filterOptions.userType && filterOptions.userType === `*`) {
         delete filterOptions.userType;
@@ -45,9 +46,8 @@ module.exports.read = async (filterParams = {}) => {
         perPage = parseInt(filterOptions.perPage);
     }
     delete filterOptions.perPage;
-    console.log(filterOptions);
 
 
-    return await model.find(filterOptions).limit(perPage).sort();
+    return await model.find(filterOptions).skip(skip).limit(perPage).sort();
 
 }

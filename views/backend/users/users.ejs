@@ -27,7 +27,6 @@
                             <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Mobile" name="mobile" value="<%= formData.mobile ? formData.mobile.trim() : null %>" />
                             <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Email" name="email" value="<%= formData.email ? formData.email.trim() : null %>" />
                             <select class="form-control mb-2 mr-sm-2" name="userType">
-
                                 <% userTypes.forEach(userType =>{ %>
                                 <option value="<%= userType.value %>" <%=userType.value==formData.userType ? `selected` : ``%> >
                                     <%= userType.label%>
@@ -128,13 +127,29 @@
                 </div>
                 <nav>
                     <p class="mt-20 text-secondary text-center">Now showing 1 to 10 of 30</p>
-                    <ul class="pagination pagination-right flex-wrap justify-content-center pagination-secondary">
-                        <li class="page-item"><a class="page-link" href="#"><i class="ti-angle-left"></i></a></li>
+                    <!-- <ul class="pagination pagination-right flex-wrap justify-content-center pagination-secondary">
+                        <li class="page-item"><a class="page-link readonly" href="#">First</a></li>
+                        <li class="page-item"><a class="page-link" href="#" title="Previous"><i class="ti-angle-left"></i></a></li>
                         <li class="page-item active"><a class="page-link" href="#">1</a></li>
                         <li class="page-item"><a class="page-link" href="#">2</a></li>
                         <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">4</a></li>
-                        <li class="page-item"><a class="page-link" href="#"><i class="ti-angle-right"></i></a></li>
+                        <li class="page-item"><input type="text" class="paginationForm" title="Page Number" placeholder="Page" /></li>
+                        <li class="page-item"><a class="page-link" href="#">8</a></li>
+                        <li class="page-item"><a class="page-link" href="#">9</a></li>
+                        <li class="page-item"><a class="page-link" href="#">10</a></li>
+                        <li class="page-item"><a class="page-link" href="#" title="Next"><i class="ti-angle-right"></i> </a></li>
+                        <li class="page-item"><a class="page-link" href="#"> Last</a></li>
+                    </ul> -->
+                    <ul class="pagination pagination-right flex-wrap justify-content-center pagination-secondary">
+                        <% paginationLinks.forEach(pageNumber => { %>
+                        <% if(pageNumber == 1 ) { %>
+                        <li class="page-item"><a class="page-link readonly" href="/admin/users">
+                                <%= pageNumber %></a></li>
+                        <% }else{ %>
+                        <li class="page-item"><a class="page-link readonly" href="<%= `/admin/users/?page=${pageNumber}` %>">
+                                <%= pageNumber %></a></li>
+                        <% } %>
+                        <% }) %>
                     </ul>
                 </nav>
                 <!-- List Display End-->
