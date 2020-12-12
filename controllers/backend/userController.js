@@ -10,18 +10,21 @@ let success = false;
 /* Read all */
 module.exports.userRead = async (req, res) => {
     let models = [];
-    let paginationLinks = [];
-    req.body.pageNumber = req.query.page || 1;
+    let pagination = {};
+    const currentPage = parseInt(req.query.page) || 1;
+    req.body.currentPage = currentPage;
     try {
         models = await userService.read(req.body);
-        paginationLinks = await paginationService.paginationCount();
+        pagination = await paginationService.paginationCount({ currentPage });
+        pagination.currentPage = currentPage;
+        console.log(pagination);
 
     } catch (error) {
-        res.render(`backend/users/users`, { metaTitle: `Users - Not Found`, paginationLinks, models, formData: req.body, singlePageTitle: `User List`, ...usersJson });
+        res.render(`backend/users/users`, { metaTitle: `Users - Not Found`, pagination, models, formData: req.body, singlePageTitle: `User List`, ...usersJson });
         return;
     }
 
-    res.render(`backend/users/users`, { metaTitle: `Users`, paginationLinks, models, formData: req.body, singlePageTitle: `User List`, ...usersJson });
+    res.render(`backend/users/users`, { metaTitle: `Users`, pagination, models, formData: req.body, singlePageTitle: `User List`, ...usersJson });
 }
 
 

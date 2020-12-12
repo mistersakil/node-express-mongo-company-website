@@ -33,9 +33,9 @@ module.exports.read = async (filterParams = {}) => {
         }
     }
     /* Skip documents */
-    if (filterOptions.pageNumber) {
-        skip = (parseInt(filterOptions.pageNumber) - 1) * perPage;
-        delete filterOptions.pageNumber;
+    if (filterOptions.currentPage) {
+        skip = (parseInt(filterOptions.currentPage) - 1) * perPage;
+        delete filterOptions.currentPage;
     }
     /* User type selection for all */
     if (filterOptions.userType && filterOptions.userType === `*`) {
