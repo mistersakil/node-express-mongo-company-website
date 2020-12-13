@@ -2,13 +2,39 @@ const { user: model } = require(`../models`);
 
 module.exports.paginationCount = async (filterParams = {}) => {
     let result = {};
-    let perPage = 10;
     let currentPage = 1;
+    let perPage = 10;
+    let skip = 0;
+    let filterOptions = {};
+
+    /* Filter current page */
     if (filterParams.currentPage) {
         currentPage = filterParams.currentPage;
         delete filterParams.currentPage;
     }
-    let totalDocuments = await model.countDocuments(filterParams);
+    /* Checking filter options */
+    if (Object.keys(filterParams).length) {
+        for (property in filterParams) {
+            if (filterParams[property]) {
+                filterOptions[property] = filterParams[property];
+            }
+        }
+    }
+
+    /* User type selection for all */
+    if (filterOptions.userType && filterOptions.userType === `*`) {
+        delete filterOptions.userType;
+    }
+    /* Per page selection */
+    if (filterOptions.perPage && filterOptions.perPage !== `*`) {
+        perPage = parseInt(filterOptions.perPage);
+    }
+    delete filterOptions.perPage;
+
+
+    console.log(filterOptions)
+
+    let totalDocuments = await model.find(filterOptions).countDocuments();
     let pages = [];
     let totalPages = Math.ceil(totalDocuments / perPage);
 
@@ -29,13 +55,13 @@ module.exports.paginationCount = async (filterParams = {}) => {
 
     }
 
+    result.nowShowing = `Now showing ${currentPage-1}1 to ${currentPage * perPage} of ${totalDocuments}` || '';
     result.links = pages.sort((a, b) => a - b);
     result.totalPages = totalPages;
     result.first = 1;
     result.last = totalPages;
+    console.log(result);
     return result;
-
-
 
 
 }

@@ -13,11 +13,11 @@ module.exports.userRead = async (req, res) => {
     let pagination = {};
     const currentPage = parseInt(req.query.page) || 1;
     req.body.currentPage = currentPage;
+    console.log(req.body);
     try {
         models = await userService.read(req.body);
-        pagination = await paginationService.paginationCount({ currentPage });
+        pagination = await paginationService.paginationCount(req.body);
         pagination.currentPage = currentPage;
-        console.log(pagination);
 
     } catch (error) {
         res.render(`backend/users/users`, { metaTitle: `Users - Not Found`, pagination, models, formData: req.body, singlePageTitle: `User List`, ...usersJson });
