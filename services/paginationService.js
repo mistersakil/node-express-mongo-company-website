@@ -6,8 +6,14 @@ module.exports.paginationCount = async (filterParams = {}) => {
     let perPage = 10;
     let skip = 0;
     let filterOptions = {};
+    console.log(filterParams);
 
     /* Filter current page */
+    if (filterParams.currentPage) {
+        currentPage = filterParams.currentPage;
+        delete filterParams.currentPage;
+    }
+    /* Remove page */
     if (filterParams.currentPage) {
         currentPage = filterParams.currentPage;
         delete filterParams.currentPage;
@@ -21,6 +27,7 @@ module.exports.paginationCount = async (filterParams = {}) => {
         }
     }
 
+
     /* User type selection for all */
     if (filterOptions.userType && filterOptions.userType === `*`) {
         delete filterOptions.userType;
@@ -32,7 +39,6 @@ module.exports.paginationCount = async (filterParams = {}) => {
     delete filterOptions.perPage;
 
 
-    console.log(filterOptions)
 
     let totalDocuments = await model.find(filterOptions).countDocuments();
     let pages = [];
@@ -62,6 +68,4 @@ module.exports.paginationCount = async (filterParams = {}) => {
     result.last = totalPages;
     console.log(result);
     return result;
-
-
 }

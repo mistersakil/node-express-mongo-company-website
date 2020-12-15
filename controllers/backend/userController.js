@@ -13,10 +13,16 @@ module.exports.userRead = async (req, res) => {
     let pagination = {};
     const currentPage = parseInt(req.query.page) || 1;
     req.body.currentPage = currentPage;
-    console.log(req.body);
+    /* Remove page */
+    if (req.query.page) {
+        delete req.query.page;
+    }
+    // console.log(req.body);
+    console.log(req.query);
+    req.query.currentPage = currentPage;
     try {
         models = await userService.read(req.body);
-        pagination = await paginationService.paginationCount(req.body);
+        pagination = await paginationService.paginationCount(req.query);
         pagination.currentPage = currentPage;
 
     } catch (error) {

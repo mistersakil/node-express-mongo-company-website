@@ -22,7 +22,7 @@
                             <%- `<span class="text-dark">by User Type = ${userTypeName}</span>` %>
                             <% } %>
                         </h4>
-                        <form class="form-inline" method="post" action="<%=links.read%>">
+                        <form class="form-inline" method="get" action="<%=links.read%>">
                             <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Name" name="name" value="<%= formData.name ? formData.name.trim() : null %>" />
                             <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Mobile" name="mobile" value="<%= formData.mobile ? formData.mobile.trim() : null %>" />
                             <input type="text" class="form-control mb-2 mr-sm-2" placeholder="Email" name="email" value="<%= formData.email ? formData.email.trim() : null %>" />
@@ -162,20 +162,20 @@
                         <li class="page-item  <%= pageNumber == pagination.currentPage ? `active` : `` %>"><a class="page-link readonly" href="/admin/users">
                                 <%= pageNumber %></a></li>
                         <% }else{ %>
-                        <li class="page-item <%= pageNumber == pagination.currentPage ? `active` : `` %> "><a class="page-link readonly" href="<%= `/admin/users/?page=${pageNumber}` %>">
+                        <li class="page-item <%= pageNumber == pagination.currentPage ? `active` : `` %> "><a class="page-link readonly" href="<%= `/admin/users?page=${pageNumber}` %>">
                                 <%= pageNumber %></a></li>
                         <% } %>
                         <% }) %>
                         <% if(pagination.currentPage < pagination.totalPages) { %>
                         <li class="page-item">
-                            <a class="page-link readonly" href="<%= `/admin/users/?page=${pagination.currentPage+1}` %>" title="Next">
+                            <a class="page-link readonly" href="<%= `/admin/users?page=${pagination.currentPage+1}` %>" title="Next">
                                 <i class="ti-angle-right"></i>
                             </a>
                         </li>
                         <% } %>
                         <% if(pagination.last) { %>
                         <li class="page-item">
-                            <a class="page-link readonly" href="<%= `/admin/users/?page=${pagination.last}` %>" title="Last">
+                            <a class="page-link readonly" href="<%= `/admin/users?page=${pagination.last}` %>" title="Last">
                                 Last
                             </a>
                         </li>

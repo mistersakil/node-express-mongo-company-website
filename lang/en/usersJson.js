@@ -9,7 +9,7 @@ module.exports = {
         { label: `User`, value: 1 }
     ],
     perPageItems: [{
-            label: 'All Rows',
+            label: 'Default',
             value: '*'
         },
         {
