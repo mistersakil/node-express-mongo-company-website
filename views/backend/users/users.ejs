@@ -145,37 +145,39 @@
                     <ul class="pagination pagination-right flex-wrap justify-content-center pagination-secondary">
                         <% if(pagination.first) { %>
                         <li class="page-item">
-                            <a class="page-link readonly" href="<%= `/admin/users` %>" title="First">
+                            <a class="page-link readonly" href="<%= `/admin/users?page=${pagination.first}` %><%= pagination.queryString ? `&`+pagination.queryString : `` %>" title="First">
                                 First
                             </a>
                         </li>
                         <% } %>
                         <% if(pagination.currentPage > 1) { %>
                         <li class="page-item">
-                            <a class="page-link readonly" href="<%= pagination.currentPage-1 > 1 ? `/admin/users/?page=${pagination.currentPage-1}` : `/admin/users` %>" title="Previous">
+                            <a class="page-link readonly" href="<%= `/admin/users?page=${pagination.currentPage-1}` %><%= pagination.queryString ? `&`+pagination.queryString : `` %>" title="Previous">
                                 <i class="ti-angle-left"></i>
                             </a>
                         </li>
                         <% } %>
                         <% pagination.links.forEach(pageNumber => { %>
-                        <% if(pageNumber == 1 ) { %>
-                        <li class="page-item  <%= pageNumber == pagination.currentPage ? `active` : `` %>"><a class="page-link readonly" href="/admin/users">
+                        <li class="page-item <%= pageNumber == pagination.currentPage ? `active` : `` %> "><a class="page-link readonly" href="<%= `/admin/users?page=${pageNumber}` %><%= pagination.queryString ? `&`+pagination.queryString : `` %>">
                                 <%= pageNumber %></a></li>
-                        <% }else{ %>
-                        <li class="page-item <%= pageNumber == pagination.currentPage ? `active` : `` %> "><a class="page-link readonly" href="<%= `/admin/users?page=${pageNumber}` %>">
-                                <%= pageNumber %></a></li>
-                        <% } %>
                         <% }) %>
                         <% if(pagination.currentPage < pagination.totalPages) { %>
                         <li class="page-item">
-                            <a class="page-link readonly" href="<%= `/admin/users?page=${pagination.currentPage+1}` %>" title="Next">
+                            <a class="page-link readonly" href="<%= `/admin/users?page=${pagination.currentPage+1}` %><%= pagination.queryString ? `&`+pagination.queryString : `` %>" title="Next">
                                 <i class="ti-angle-right"></i>
                             </a>
                         </li>
                         <% } %>
+                        <% if(!pagination.queryString){ %>
+                        <li class="page-item">
+                            <form action="<%=links.read%>" method="get">
+                                <input name="page" type="text" class="paginationForm" title="Page Number" placeholder="Page" />
+                            </form>
+                        </li>
+                        <% } %>
                         <% if(pagination.last) { %>
                         <li class="page-item">
-                            <a class="page-link readonly" href="<%= `/admin/users?page=${pagination.last}` %>" title="Last">
+                            <a class="page-link readonly" href="<%= `/admin/users?page=${pagination.last}` %><%= pagination.queryString ? `&`+pagination.queryString : `` %>" title="Last">
                                 Last
                             </a>
                         </li>

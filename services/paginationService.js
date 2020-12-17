@@ -6,18 +6,8 @@ module.exports.paginationCount = async (filterParams = {}) => {
     let perPage = 10;
     let skip = 0;
     let filterOptions = {};
-    console.log(filterParams);
 
-    /* Filter current page */
-    if (filterParams.currentPage) {
-        currentPage = filterParams.currentPage;
-        delete filterParams.currentPage;
-    }
-    /* Remove page */
-    if (filterParams.currentPage) {
-        currentPage = filterParams.currentPage;
-        delete filterParams.currentPage;
-    }
+
     /* Checking filter options */
     if (Object.keys(filterParams).length) {
         for (property in filterParams) {
@@ -27,6 +17,11 @@ module.exports.paginationCount = async (filterParams = {}) => {
         }
     }
 
+    /* Remove current page from query */
+    if (filterOptions.currentPage) {
+        currentPage = filterOptions.currentPage;
+        delete filterOptions.currentPage;
+    }
 
     /* User type selection for all */
     if (filterOptions.userType && filterOptions.userType === `*`) {
@@ -61,11 +56,11 @@ module.exports.paginationCount = async (filterParams = {}) => {
 
     }
 
-    result.nowShowing = `Now showing ${currentPage-1}1 to ${currentPage * perPage} of ${totalDocuments}` || '';
+    result.nowShowing = `Now showing ${(currentPage*perPage) - (perPage-1)} to ${currentPage * perPage} of ${totalDocuments}` || '';
     result.links = pages.sort((a, b) => a - b);
     result.totalPages = totalPages;
     result.first = 1;
     result.last = totalPages;
-    console.log(result);
+
     return result;
 }

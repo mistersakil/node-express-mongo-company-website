@@ -17,20 +17,29 @@ module.exports.userRead = async (req, res) => {
     if (req.query.page) {
         delete req.query.page;
     }
-    // console.log(req.body);
-    console.log(req.query);
     req.query.currentPage = currentPage;
     try {
-        models = await userService.read(req.body);
+        models = await userService.read(req.query);
         pagination = await paginationService.paginationCount(req.query);
         pagination.currentPage = currentPage;
+        pagination.query = { ...req.query };
+        delete pagination.query.currentPage;
+        pagination.queryString = '';
+
+        /* Checking filter options */
+        if (Object.keys(pagination.query).length) {
+            for (property in pagination.query) {
+                pagination.queryString += `${property}=${pagination.query[property]}&`;
+            }
+            pagination.queryString = pagination.queryString.slice(0, (pagination.queryString.length - 1));
+        }
 
     } catch (error) {
-        res.render(`backend/users/users`, { metaTitle: `Users - Not Found`, pagination, models, formData: req.body, singlePageTitle: `User List`, ...usersJson });
+        res.render(`backend/users/users`, { metaTitle: `Users - Not Found`, pagination, models, formData: req.query, singlePageTitle: `User List`, ...usersJson });
         return;
     }
 
-    res.render(`backend/users/users`, { metaTitle: `Users`, pagination, models, formData: req.body, singlePageTitle: `User List`, ...usersJson });
+    res.render(`backend/users/users`, { metaTitle: `Users`, pagination, models, formData: req.query, singlePageTitle: `User List`, ...usersJson });
 }
 
 

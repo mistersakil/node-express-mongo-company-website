@@ -32,6 +32,11 @@ module.exports.read = async (filterParams = {}) => {
             }
         }
     }
+    /* Per page selection */
+    if (filterOptions.perPage && filterOptions.perPage !== `*`) {
+        perPage = parseInt(filterOptions.perPage);
+    }
+    delete filterOptions.perPage;
     /* Skip documents */
     if (filterOptions.currentPage) {
         skip = (parseInt(filterOptions.currentPage) - 1) * perPage;
@@ -41,12 +46,6 @@ module.exports.read = async (filterParams = {}) => {
     if (filterOptions.userType && filterOptions.userType === `*`) {
         delete filterOptions.userType;
     }
-    /* Per page selection */
-    if (filterOptions.perPage && filterOptions.perPage !== `*`) {
-        perPage = parseInt(filterOptions.perPage);
-    }
-    delete filterOptions.perPage;
-
 
     return await model.find(filterOptions).skip(skip).limit(perPage).sort();
 
