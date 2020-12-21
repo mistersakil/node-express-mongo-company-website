@@ -103,13 +103,13 @@
                                     <% } %>
                                 </td>
                                 <td class="text-center">
-                                    <a href="/" class="btn-warning">
+                                    <a href="<%=links.updateSingle(model._id)%>" class="btn-warning">
                                         <i class="fa fa-pencil"></i>
                                     </a>
-                                    <a href="/" class="btn-primary">
+                                    <a href="<%=links.readSingle(model._id)%>" class="btn-primary">
                                         <i class="fa fa-eye"></i>
                                     </a>
-                                    <a href="/" class="btn-danger">
+                                    <a href="<%=links.deleteSingle(model._id)%>" class="btn-danger">
                                         <i class="fa fa-trash"></i>
                                     </a>
                                 </td>

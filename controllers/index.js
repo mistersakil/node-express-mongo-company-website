@@ -10,7 +10,7 @@ const portfolioController = require(`./frontend/portfolioController`);
 const galleryController = require(`./frontend/galleryController`);
 const serviceController = require(`./frontend/serviceController`);
 
-/* Controllers Frontend */
+/* Controllers Backend */
 
 const dashboardBackendController = require(`./backend/dashboardController`);
 const userBackendController = require(`./backend/userController`);

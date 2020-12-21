@@ -1,4 +1,4 @@
-const { user: model } = require(`../models`);
+const { user: defaultModel } = require(`../models`);
 
 module.exports.paginationCount = async (filterParams = {}) => {
     let result = {};
@@ -6,6 +6,7 @@ module.exports.paginationCount = async (filterParams = {}) => {
     let perPage = 10;
     let skip = 0;
     let filterOptions = {};
+    let model = defaultModel;
 
 
     /* Checking filter options */
@@ -15,6 +16,11 @@ module.exports.paginationCount = async (filterParams = {}) => {
                 filterOptions[property] = filterParams[property];
             }
         }
+    }
+    /* Remove model from query option */
+    if (filterParams.model) {
+        model = filterParams.model;
+        delete filterParams.model;
     }
 
     /* Remove current page from query */
@@ -32,8 +38,6 @@ module.exports.paginationCount = async (filterParams = {}) => {
         perPage = parseInt(filterOptions.perPage);
     }
     delete filterOptions.perPage;
-
-
 
     let totalDocuments = await model.find(filterOptions).countDocuments();
     let pages = [];
@@ -55,8 +59,10 @@ module.exports.paginationCount = async (filterParams = {}) => {
         }
 
     }
-
-    result.nowShowing = `Now showing ${(currentPage*perPage) - (perPage-1)} to ${currentPage * perPage} of ${totalDocuments}` || '';
+    let nowShowingFrom = (currentPage * perPage) - (perPage - 1);
+    let nowShowingTo = currentPage * perPage > totalDocuments ? totalDocuments : currentPage * perPage;
+    // nowShowingTo = nowShowingTo > totalDocuments ? totalDocuments : nowShowingTo;
+    result.nowShowing = `Now showing ${nowShowingFrom} to ${nowShowingTo} of ${totalDocuments}` || '';
     result.links = pages.sort((a, b) => a - b);
     result.totalPages = totalPages;
     result.first = 1;

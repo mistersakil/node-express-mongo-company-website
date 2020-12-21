@@ -1,5 +1,5 @@
 module.exports = {
-    links: { create: `/admin/users/create`, read: `/admin/users` },
+    links: { create: `/admin/users/create`, read: `/admin/users`, deleteSingle: id => `/admin/users/${id}/delete`, readSingle: id => `/admin/users/${id}`, updateSingle: id => `/admin/users/${id}/edit` },
     userTypes: [
         { label: `All Type`, value: `*` },
         { label: `Admin`, value: 9 },

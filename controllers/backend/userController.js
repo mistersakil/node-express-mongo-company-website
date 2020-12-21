@@ -1,3 +1,4 @@
+const { user: model } = require(`../../models`);
 const { userService, paginationService } = require(`../../services`);
 const validator = require(`express-validator`);
 const { usersJson } = require(`../../lang`);
@@ -7,17 +8,18 @@ const formData = {};
 let success = false;
 
 
-/* Read all */
+/* View all docuement */
 module.exports.userRead = async (req, res) => {
     let models = [];
     let pagination = {};
     const currentPage = parseInt(req.query.page) || 1;
-    req.body.currentPage = currentPage;
+
     /* Remove page */
     if (req.query.page) {
         delete req.query.page;
     }
     req.query.currentPage = currentPage;
+    req.query.model = model;
     try {
         models = await userService.read(req.query);
         pagination = await paginationService.paginationCount(req.query);
@@ -72,4 +74,20 @@ module.exports.userCreateProcess = async (req, res) => {
 
 
 
+}
+
+/* View single document */
+module.exports.userReadSingle = async (req, res) => {
+    let models = await userService.read();
+    res.render(`backend/users/create`, { metaTitle: `Create New User`, errors, success, formData, ...usersJson });
+}
+/* Update single document */
+module.exports.userUpdateSingle = async (req, res) => {
+    let models = await userService.read();
+    res.render(`backend/users/create`, { metaTitle: `Create New User`, errors, success, formData, ...usersJson });
+}
+/* Delete signle document */
+module.exports.userDeleteSingle = async (req, res) => {
+    let models = await userService.read();
+    res.render(`backend/users/create`, { metaTitle: `Create New User`, errors, success, formData, ...usersJson });
 }

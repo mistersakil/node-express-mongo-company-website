@@ -29,8 +29,11 @@ router.get(`/login`, frontend.login);
 router.get('/admin', backend.dashboard);
 router.get('/admin/users', backend.userRead);
 router.post('/admin/users', backend.userRead);
+router.get('/admin/users/:id', backend.userReadSingle);
 router.get('/admin/users/create', backend.userCreate);
 router.post('/admin/users/create', registrationFormValidation, backend.userCreateProcess);
+router.get('/admin/users/:id/edit', backend.userUpdateSingle);
+router.get('/admin/users/:id/delete', backend.userDeleteSingle);
 
 
 /* Routes Not Found */
