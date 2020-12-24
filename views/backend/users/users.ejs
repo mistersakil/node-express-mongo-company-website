@@ -129,19 +129,6 @@
                     <p class="mt-20 text-secondary text-center">
                         <%= pagination.nowShowing %>
                     </p>
-                    <!-- <ul class="pagination pagination-right flex-wrap justify-content-center pagination-secondary">
-                        <li class="page-item"><a class="page-link readonly" href="#">First</a></li>
-                        <li class="page-item"><a class="page-link" href="#" title="Previous"><i class="ti-angle-left"></i></a></li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><input type="text" class="paginationForm" title="Page Number" placeholder="Page" /></li>
-                        <li class="page-item"><a class="page-link" href="#">8</a></li>
-                        <li class="page-item"><a class="page-link" href="#">9</a></li>
-                        <li class="page-item"><a class="page-link" href="#">10</a></li>
-                        <li class="page-item"><a class="page-link" href="#" title="Next"><i class="ti-angle-right"></i> </a></li>
-                        <li class="page-item"><a class="page-link" href="#"> Last</a></li>
-                    </ul> -->
                     <ul class="pagination pagination-right flex-wrap justify-content-center pagination-secondary">
                         <% if(pagination.first) { %>
                         <li class="page-item">
@@ -189,5 +176,12 @@
         </div>
     </div>
 </div>
+<button type="button" class="btn btn-outline-primary btn-sm" onclick="showToastPosition('top-right')">Top-right</button>
 <%- include("../layout/footer") %>
+<!-- Plugin js for this page-->
+<% if(1){ %>
+<script src="/backend/js/jquery.toast.min.js"></script>
+<script src="/backend/js/toastDemo.js"></script>
+<% } %>
+<!-- <script src="/backend/js/desktop-notification.js"></script> -->
 <%- include("../layout/close") %>

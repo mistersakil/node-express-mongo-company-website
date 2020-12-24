@@ -88,6 +88,15 @@ module.exports.userUpdateSingle = async (req, res) => {
 }
 /* Delete signle document */
 module.exports.userDeleteSingle = async (req, res) => {
-    let models = await userService.read();
-    res.render(`backend/users/create`, { metaTitle: `Create New User`, errors, success, formData, ...usersJson });
+    console.log(req.params);
+    const { id, page } = req.params;
+
+    let model = await userService.delete(id);
+    if (!model) {
+        console.log(`Invalid query`);
+    }
+    // res.render(`backend/users/create`, { metaTitle: `User Deleted`, ...usersJson });
+    // res.redirect(`/admin/users?page=${page}`);
+    res.append('warning', true)
+    res.redirect('back')
 }

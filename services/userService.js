@@ -1,5 +1,16 @@
 const { user: model } = require(`../models`);
 const bcrypt = require(`bcrypt`);
+/* Delete signle document */
+module.exports.delete = async id => {
+    try {
+        let modelDeleted = await model.deleteOne({ _id: id });
+        console.log(modelDeleted.deletedCount);
+        return true;
+    } catch (error) {
+        return false;
+    }
+
+}
 
 /* Create new */
 module.exports.create = async (formData) => {
@@ -19,11 +30,6 @@ module.exports.read = async (filterParams = {}) => {
     let perPage = 10;
     let skip = 0;
     let filterOptions = {};
-    try {
-        // perPage = await model.countDocuments();
-    } catch (error) {
-        throw new Error(`User Not Found`)
-    }
 
     if (Object.keys(filterParams).length) {
         for (property in filterParams) {
