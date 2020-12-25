@@ -3,9 +3,8 @@ const router = require(`express`).Router();
 /* Validations */
 const { registrationFormValidation } = require(`../validations`);
 
-/* Controllers Frontend */
+/* Controllers */
 const { frontend, backend } = require(`../controllers`);
-
 
 /* Routes Frontend */
 

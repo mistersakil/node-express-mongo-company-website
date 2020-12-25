@@ -109,7 +109,7 @@
                                     <a href="<%=links.readSingle(model._id)%>" class="btn-primary">
                                         <i class="fa fa-eye"></i>
                                     </a>
-                                    <a href="<%=links.deleteSingle(model._id)%>" class="btn-danger">
+                                    <a onclick="return confirm(`Are you sure to delete this?`)" href="<%=links.deleteSingle(model._id)%>" class="btn-danger">
                                         <i class="fa fa-trash"></i>
                                     </a>
                                 </td>

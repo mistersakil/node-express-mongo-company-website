@@ -95,8 +95,6 @@ module.exports.userDeleteSingle = async (req, res) => {
     if (!model) {
         console.log(`Invalid query`);
     }
-    // res.render(`backend/users/create`, { metaTitle: `User Deleted`, ...usersJson });
-    // res.redirect(`/admin/users?page=${page}`);
-    res.append('warning', true)
+
     res.redirect('back')
 }
